@@ -15,7 +15,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import UpdateUserData from "./UpdateUserData";
 import ContactDetailsForm from "./ContactDetailsForm";
 
-const socket = io('http://localhost:4005'); // Replace with your server URL
+const socket = io(`${config.url}`); // Replace with your server URL
 
 const Menu = () => {
   const [selectedContact, setSelectedContact] = useState(null);
