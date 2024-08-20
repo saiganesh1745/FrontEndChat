@@ -1,0 +1,227 @@
+/* Common Styles */
+.chat-area {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid #ccc;
+  overflow: hidden;
+}
+.back-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+.message-container {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  word-wrap: break-word;
+  max-width: 70%;
+  position: relative;
+}
+
+.message.sent {
+  background-color: #dcf8c6;
+  align-self: flex-end;
+}
+
+.message.received {
+  background-color: #fff;
+  align-self: flex-start;
+}
+
+.message-time {
+  font-size: 12px;
+  color: #888888;
+}
+
+.message.sent .message-time {
+  align-self: flex-end;
+}
+
+.message.received .message-time {
+  align-self: flex-start;
+}
+
+.chat-input {
+  display: flex;
+  padding: 4px;
+  border-top: 1px solid #ccc;
+}
+
+.chat-input textarea {
+  flex: 1;
+  min-height: 30px;
+  max-height: 60px;
+  padding: 8px;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  margin-right: 10px;
+  font-size: 12px;
+  resize: none;
+  overflow: hidden;
+  overflow-y: auto;
+  color: #333;
+  background-color: #fff;
+}
+
+.chat-input button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: none;
+  background: none; /* Remove background */
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.chat-input button:hover {
+  background: none; /* Keep background removed on hover */
+}
+
+.chat-input button svg {
+  color: #1f9de0; /* Set the icon color to blue */
+  font-size: 24px; /* Adjust icon size if needed */
+}
+
+.select-to-chat {
+  padding: 20px;
+  text-align: center;
+  color: #999;
+}
+
+/* Light Theme */
+.light-theme .chat-area {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.light-theme .message.sent {
+  background-color: #dcf8c6;
+}
+
+.light-theme .message.received {
+  background-color: #fff;
+}
+
+/* Dark Theme */
+.dark-theme .chat-area {
+  background-color: #181818;
+  color: #ddd;
+}
+
+.dark-theme .chat-input textarea {
+  color: #ddd; /* Text color in dark mode */
+  background-color: #333; /* Background color in dark mode */
+}
+
+.dark-theme .message.sent {
+  background-color: rgb(41, 47, 44);
+}
+
+.dark-theme .message.received {
+  background-color: #444;
+}
+
+
+
+
+/* Context Menu Styles */
+.context-menu {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  display: none; /* Hidden by default */
+}
+
+.context-menu.show {
+  display: block; /* Show when active */
+}
+
+.context-menu-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+}
+
+.context-menu-item:hover {
+  background-color: #f0f0f0;
+}
+
+.dark-theme .context-menu {
+  background-color: #333;
+  border-color: #444;
+}
+
+.dark-theme .context-menu-item {
+  color: #ddd;
+}
+
+.dark-theme .context-menu-item:hover {
+  background-color: #444;
+}
+
+
+.dark-theme .scroll-down-icon {
+  position: absolute;
+  bottom: 95px; /* Adjust this value to position it just above the text area */
+  left: 65%;
+  transform: translateX(-50%);
+  background-color: #333; /* Customize color */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 1000;
+  font-size: 24px; /* Icon size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark-theme .scroll-down-icon:hover {
+  background-color: #3f3f3f; /* Darker shade for hover effect */
+}
+
+
+
+.light-theme .scroll-down-icon {
+  position: absolute;
+  bottom: 95px; /* Adjust this value to position it just above the text area */
+  left: 65%;
+  transform: translateX(-50%);
+  background-color: #008bfc; /* Customize color */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 1000;
+  font-size: 24px; /* Icon size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.light-theme .scroll-down-icon:hover {
+  background-color: #40c2df; /* Darker shade for hover effect */
+}

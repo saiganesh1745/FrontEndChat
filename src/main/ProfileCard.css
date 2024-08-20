@@ -1,0 +1,111 @@
+/* Profile Card Styles */
+.profile-card {
+  display: flex;
+  align-items: center;
+  padding: 1px;
+  /* border: 1px solid #ccc; */
+  /* border-radius: 5px; */
+  cursor: pointer;
+  margin: 5px 0;
+}
+
+.profile-photo-container {
+  position: relative;
+}
+
+.profile-card img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.status-indicator {
+  position: absolute;
+  top: -3px;
+  left: 35px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid white; /* Adds a white border around the dot */
+  background-color: transparent; /* Default to transparent; will be overridden by class */
+}
+
+.status-indicator.online {
+  background-color: rgb(12, 221, 12); /* Light green if online */
+}
+
+.status-indicator.offline {
+  background-color: red; /* Light red if offline */
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-info p {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Modal Styles */
+.profile-photo-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Slightly darker overlay for better focus */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px); /* Apply blur effect to the background */
+  z-index: 1000; /* Ensure modal is on top of all elements */
+}
+
+.profile-photo-modal-content {
+  position: relative;
+  background: transparent; /* Transparent background for clean appearance */
+  padding: 0; /* Remove padding for full-width image */
+  border: none; /* No border for a cleaner look */
+}
+
+.modal-image {
+  max-width: 90vw; /* Image will cover most of the viewport width */
+  max-height: 90vh; /* Image will cover most of the viewport height */
+  object-fit: cover; /* Ensure image fits within the modal */
+  border-radius: 8px; /* Rounded corners for the image */
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: red;
+  color: #fff;
+  border: none;
+  border-radius: 100%;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  z-index: 1001; /* Ensure close button is on top of the modal content */
+}
+
+/* Media Queries */
+@media (max-width: 767px) {
+  .modal-image {
+    width: 100%;
+    max-height: 60vh; /* Reduced height for smaller screens */
+  }
+
+  .modal-close-button {
+    top: 5px;
+    right: 5px;
+    font-size: 14px; /* Slightly smaller close button for smaller screens */
+    padding: 3px 8px;
+  }
+}
+
+

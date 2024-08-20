@@ -1,0 +1,98 @@
+/* Base styles for the container and card */
+.p-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.p-card {
+    text-align: center;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    background-color: var(--card-background-color);
+    color: var(--text-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+/* Light theme styles */
+.light-theme .p-card {
+    --card-background-color: #ffffff; /* Light theme background */
+    --text-color: #333333; /* Light theme text color */
+}
+
+/* Dark theme styles */
+.dark-theme .p-card {
+    --card-background-color: #1e1e1e; /* Dark theme background */
+    --text-color: #f5f5f5; /* Dark theme text color */
+}
+
+/* Image styles */
+.p-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+/* Form details and labels */
+form > div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+input[type="text"],
+textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    background-color: var(--input-background-color);
+    color: var(--input-text-color);
+    transition: border-color 0.3s;
+}
+
+textarea {
+    height: 100px;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: #ff0000;
+    margin-top: 10px;
+}
+

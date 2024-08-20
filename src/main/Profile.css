@@ -1,0 +1,50 @@
+.p-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .p-card {
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #fff; /* Light theme background color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #333; /* Default text color */
+  }
+  
+  /* Dark theme adjustments */
+  .p-container.dark-theme .profile-card {
+    background-color: #333; /* Dark theme background color */
+    color: #fff; /* Text color in dark mode */
+  }
+  
+  .p-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .p-details {
+    margin-top: 20px;
+  }
+  
+  .p-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .p-label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .p-value {
+    flex: 1;
+  }
+  

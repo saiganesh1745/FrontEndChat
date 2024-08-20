@@ -1,0 +1,335 @@
+/* Common Styles */
+.menu-container {
+  display: flex;
+  height: 100vh;
+}
+
+.select-to-chat {
+  text-align: center;
+  margin-top: 20px;
+  color: #666;
+}
+
+.menu-left {
+  width: 30%;
+  border-right: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-right {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-header {
+  display: flex;
+  align-items: top;
+  padding: 10px;
+  /* border-bottom: 1px solid #ccc; */
+  /* justify-content: space-between; */
+}
+
+
+
+
+.menu-header-r{
+  display: flex;
+  align-items: top;
+  padding: 10px;
+  /* border-bottom: 1px solid #ccc; */
+  justify-content: space-between;
+}
+
+
+.menu-avatar img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.menu-title {
+  display: flex;
+  align-items: center;
+}
+
+.menu-title h1 {
+  margin: 0 10px;
+}
+
+.back-button {
+  display: none;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.contact-list,
+.chat-area {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.contact-item {
+  padding: 10px;
+  cursor: pointer;
+  /* Remove border-bottom */
+  border-bottom: 1px solid #eee;
+
+}
+
+.contact-item:hover {
+  background-color: #f0f0f0;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+
+
+}
+
+.chat-header img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+
+.chat-header h2 {
+  margin: 0;
+}
+
+.search-bar {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: calc(100% - 40px);
+}
+
+.menu-footer {
+  margin-top: auto;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  background-color: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.account-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.placeholder-button {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.logout-button {
+  /* padding: 10px;
+  background-color: red; */
+  color: red;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Light Theme */
+.light-theme {
+  background-color: #fff;
+  color: #000;
+}
+
+.back-button.light-theme {
+  color: #1b1a1a;
+}
+
+.light-theme .menu-left {
+  background-color: #f9f9f9;
+}
+
+.light-theme .menu-right {
+  background-color: #fff;
+}
+
+.light-theme .menu-header {
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+}
+
+.light-theme .contact-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* Dark Theme */
+.dark-theme {
+  background-color: #333;
+  color: #fff;
+}
+
+.back-button.dark-theme {
+  color: white;
+}
+
+.dark-theme .menu-left {
+  background-color: #040404;
+}
+
+.dark-theme .menu-right {
+  background-color: #2a2828;
+}
+
+.dark-theme .menu-header {
+  background-color: #1b1a1a;
+  border-bottom: 1px solid #201f1f;
+}
+
+.dark-theme .contact-item:hover {
+  background-color: #5b5757;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 575.98px) {
+  .menu-left,
+  .menu-right {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .back-button {
+    display: block;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .menu-left,
+  .menu-right {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .back-button {
+    display: block;
+  }
+}
+
+.menu-avatar {
+  cursor: pointer;
+}
+
+.online-status {
+  color: green;
+  font-family: 'Georgia', serif;
+  font-weight: 560; /* Use bold for emphasis, adjust as needed */
+}
+
+.offline-status {
+  color: rgb(238, 13, 13);
+  font-family: 'Georgia', serif;
+  font-weight: normal; /* Normal weight for offline status */
+}
+
+
+
+/* Toggle Switch Styles */
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.checkbox-label {
+  background-color: #111;
+  width: 50px;
+  height: 20px;
+  border-radius: 50px;
+  position: relative;
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s linear;
+}
+
+.fa-moon,
+.fa-sun {
+  font-size: 14px;
+}
+
+.fa-moon {
+  color: #f1c40f;
+  margin-left: 5px;
+}
+
+.fa-sun {
+  color: #f39c12;
+  margin-right: 5px;
+}
+
+.checkbox-label .ball {
+  background-color: #fff; /* Default ball color for light theme */
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  border-radius: 50%;
+  transition: transform 0.2s linear, background-color 0.2s linear;
+}
+
+.checkbox:checked + .checkbox-label .ball {
+  transform: translateX(30px);
+}
+
+/* Light Theme */
+.light-theme .checkbox-label {
+  background-color: #111; /* Dark background for light theme */
+}
+
+.light-theme .checkbox-label .ball {
+  background-color: #fff; /* White ball for light theme */
+}
+
+/* Dark Theme */
+.dark-theme .checkbox-label {
+  background-color: #fff; /* White background for dark theme */
+}
+
+.dark-theme .checkbox-label .ball {
+  background-color: #000; /* Black ball for dark theme */
+}
+
+
+
+
