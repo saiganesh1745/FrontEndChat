@@ -154,7 +154,8 @@
 }
 
 .chat-input button:hover {
-  background-color: rgba(0, 86, 179, 0.1); /* Light background on hover */
+  /* background-color: rgba(0, 86, 179, 0.1);  */
+  background-color: transparent;
 }
 
 .send-icon {
@@ -162,9 +163,9 @@
   transition: color 0.3s ease;
 }
 
-/* .chat-input button:hover .send-icon { */
-  /* color: #1565c0; Darker blue on hover */
-/* } */
+.chat-input button:hover .send-icon {
+  color: #2e609a; 
+}
 
 /* No Contact Selected */
 .select-to-chat {

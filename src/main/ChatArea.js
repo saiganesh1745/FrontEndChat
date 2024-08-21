@@ -223,10 +223,16 @@ const ChatArea = ({ selectedContact }) => {
 
           <div className="chat-input">
             <textarea
-              ref={textAreaRef}
+                ref={textAreaRef}
               value={message}
               onChange={handleTextAreaChange}
-              placeholder="Type a message"
+                placeholder="Type a message"
+                onKeyDown={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault();
+                  sendMessage();
+                }
+              }}
             />
             <button onClick={sendMessage} className="send-button">
               <SendIcon className="send-icon" />
