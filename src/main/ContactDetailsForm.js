@@ -1,14 +1,15 @@
-
 import React from "react";
-import "./ContactDetailsForm.css"; // Create CSS file for styling
+import "./ContactDetailsForm.css";
 
 const ContactDetailsForm = ({ contact, onClose }) => {
   if (!contact) return null;
 
+  const isDarkTheme = document.body.classList.contains('dark-theme');
+
   return (
-    <div className="contact-details-form">
+    <div className={`contact-details-form ${isDarkTheme ? 'dark-theme' : ''}`}>
       <div className="contact-details-overlay" onClick={onClose}></div>
-      <div className="contact-details-content">
+      <div className={`contact-details-content ${isDarkTheme ? 'dark-theme' : ''}`}>
         <button className="close-button" onClick={onClose}>X</button>
         <img
           src={contact.imagelink || "https://via.placeholder.com/150"}

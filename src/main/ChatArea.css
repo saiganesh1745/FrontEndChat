@@ -4,8 +4,12 @@
   flex-direction: column;
   height: 100%;
   border: 1px solid #ccc;
+  border-radius: 5px;
   overflow: hidden;
 }
+
+
+
 .back-button {
   background: none;
   border: none;
@@ -14,48 +18,105 @@
   font-size: 24px;
 }
 
+.contact-info {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.contact-photo {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 0%;
+  margin-right: 1000px;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-name {
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Trirong', serif;
+}
+
+.contact-status {
+  font-size: 14px;
+  font-family: 'Times New Roman', serif;
+}
+
+.contact-status.online {
+  color: rgb(12, 221, 12); /* Light green if online */
+}
+
+.contact-status.offline {
+  color: red; /* Light red if offline */
+}
+
+/* Message Container */
 .message-container {
   flex: 1;
   padding: 10px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
-.message {
+.message-item {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 10px;
-  word-wrap: break-word;
   max-width: 70%;
   position: relative;
+  word-wrap: break-word;
 }
 
-.message.sent {
-  background-color: #dcf8c6;
+.message-item.sent {
+  background-color: #e1ffc7; /* Light green for sent messages */
   align-self: flex-end;
+  border-radius: 10px 10px 0 10px; /* Rounded corners for sent messages */
 }
 
-.message.received {
-  background-color: #fff;
+.message-item.received {
+  background-color: #f1f0f0; /* Light gray for received messages */
   align-self: flex-start;
+  border-radius: 10px 10px 10px 0; /* Rounded corners for received messages */
+}
+
+.message-content {
+  padding: 5px;
+  font-size: 14px;
 }
 
 .message-time {
   font-size: 12px;
   color: #888888;
+  align-self: flex-end; /* Align time to the end for sent messages */
 }
 
-.message.sent .message-time {
-  align-self: flex-end;
+/* Hover Effect for Message and Right Space */
+.message-item:hover {
+  background-color: #f1f1f1; /* Light grey background on hover */
 }
 
-.message.received .message-time {
-  align-self: flex-start;
+.message-item:hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1); /* Light overlay effect */
+  border-radius: 10px;
 }
 
+/* Chat Input */
 .chat-input {
   display: flex;
   padding: 4px;
@@ -82,20 +143,30 @@
   margin-left: 10px;
   padding: 5px 10px;
   border: none;
-  background: none; /* Remove background */
+  border-radius: 50%;
+  background-color: transparent;
+  color: white;
   cursor: pointer;
-  font-size: 11px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .chat-input button:hover {
-  background: none; /* Keep background removed on hover */
+  background-color: rgba(0, 86, 179, 0.1); /* Light background on hover */
 }
 
-.chat-input button svg {
-  color: #1f9de0; /* Set the icon color to blue */
-  font-size: 24px; /* Adjust icon size if needed */
+.send-icon {
+  color: #1976d2;
+  transition: color 0.3s ease;
 }
 
+.chat-input button:hover .send-icon {
+  color: #1565c0; /* Darker blue on hover */
+}
+
+/* No Contact Selected */
 .select-to-chat {
   padding: 20px;
   text-align: center;
@@ -108,12 +179,12 @@
   color: #333;
 }
 
-.light-theme .message.sent {
-  background-color: #dcf8c6;
+.light-theme .message-item.sent {
+  background-color: #e1ffc7; /* Light green for sent messages */
 }
 
-.light-theme .message.received {
-  background-color: #fff;
+.light-theme .message-item.received {
+  background-color: #f1f0f0; /* Light gray for received messages */
 }
 
 /* Dark Theme */
@@ -122,51 +193,72 @@
   color: #ddd;
 }
 
+.dark-theme .message-item.sent {
+  background-color: #00664D; /* Darker green for sent messages */
+}
+
+.dark-theme .message-item.received {
+  background-color: #333; /* Darker gray for received messages */
+}
+
 .dark-theme .chat-input textarea {
   color: #ddd; /* Text color in dark mode */
   background-color: #333; /* Background color in dark mode */
 }
 
-.dark-theme .message.sent {
-  background-color: rgb(41, 47, 44);
+/* Scroll Down Icon */
+.scroll-down-icon {
+  position: absolute;
+  bottom: 95px; /* Adjust this value to position it just above the text area */
+  left: 65%;
+  transform: translateX(-50%);
+  background-color: #0c0c0c;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 1000;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.dark-theme .message.received {
-  background-color: #444;
+.scroll-down-icon:hover {
+  background-color: #272b2f; /* Darker shade for hover effect */
 }
-
-
-
 
 /* Context Menu Styles */
 .context-menu {
   position: absolute;
   background-color: #fff;
   border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 100;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   display: none; /* Hidden by default */
+  z-index: 1000;
 }
 
 .context-menu.show {
-  display: block; /* Show when active */
+  display: block;
 }
 
 .context-menu-item {
-  padding: 10px 15px;
+  padding: 8px 12px;
   cursor: pointer;
   font-size: 14px;
-  color: #333;
 }
 
 .context-menu-item:hover {
-  background-color: #f0f0f0;
+  background-color: #f1f1f1;
 }
 
+/* Dark Theme Context Menu */
 .dark-theme .context-menu {
   background-color: #333;
-  border-color: #444;
+  border: 1px solid #444;
 }
 
 .dark-theme .context-menu-item {
@@ -174,54 +266,39 @@
 }
 
 .dark-theme .context-menu-item:hover {
-  background-color: #444;
+  background-color: #555;
 }
 
-
-.dark-theme .scroll-down-icon {
-  position: absolute;
-  bottom: 95px; /* Adjust this value to position it just above the text area */
-  left: 65%;
-  transform: translateX(-50%);
-  background-color: #333; /* Customize color */
-  color: white;
-  border: none;
-  border-radius: 50%;
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  z-index: 1000;
-  font-size: 24px; /* Icon size */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Message States */
+.message-item.read {
+  opacity: 1; /* Optional: Dim the read messages */
 }
 
-.dark-theme .scroll-down-icon:hover {
-  background-color: #3f3f3f; /* Darker shade for hover effect */
+.message-item.unread {
+  opacity: 1; /* Full opacity for unread messages */
 }
 
-
-
-.light-theme .scroll-down-icon {
-  position: absolute;
-  bottom: 95px; /* Adjust this value to position it just above the text area */
-  left: 65%;
-  transform: translateX(-50%);
-  background-color: #008bfc; /* Customize color */
-  color: white;
-  border: none;
-  border-radius: 50%;
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  z-index: 1000;
-  font-size: 24px; /* Icon size */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Dark Theme Message States */
+.dark-theme .message-item.read {
+  opacity: 1;
 }
 
-.light-theme .scroll-down-icon:hover {
-  background-color: #40c2df; /* Darker shade for hover effect */
+.dark-theme .message-item.unread {
+  opacity: 1;
+}
+
+.tick-icon {
+  font-size: 5px; /* Adjust the size of the tick icon */
+  vertical-align: middle; /* Align the tick with the text */
+  margin-left: 5px; /* Spacing between time and tick icon */
+  color: gray; /* Default color for the tick icon */
+  opacity: 0.7; /* Add a subtle opacity */
+}
+
+.read-tick {
+  font-size: 5px; /* Adjust the size of the tick icon */
+  vertical-align: middle; /* Align the tick with the text */
+  margin-left: 5px;
+  color: #0593ff; /* Change the color to green for read messages */
+  opacity: 1; /* Full opacity when read */
 }

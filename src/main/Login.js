@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import config from '../config';
 import Menu from './Menu';
+import ParticlesComponent from './ParticlesComponent';
 
 export default function Login({ onUserLogin }) {
   const [formData, setFormData] = useState({
@@ -100,126 +101,129 @@ export default function Login({ onUserLogin }) {
 
   return (
     <div style={styles.body}>
-      {!showForms ? (
-        <div style={styles.mainScreen}>
-          <div style={styles.introText}>{typedText}</div>
-          {typingComplete && (
-            <button style={styles.button} onClick={() => setShowForms(true)}>
-              Continue
-            </button>
-          )}
-        </div>
-      ) : (
-        <div style={styles.formContainer}>
-          {isLoginForm ? (
-            <>
-              <h3 align="center">Login</h3>
-              {error && <h4 style={styles.error}>{error}</h4>}
-              <form style={styles.form} onSubmit={handleLoginSubmit}>
-                <label style={styles.label} htmlFor="email">Email</label>
-                <input
-                  style={styles.input}
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={formData.email}
-                  onChange={(e) => handleChange(e, setFormData)}
-                  required
-                  disabled={loading}
-                />
-                <label style={styles.label} htmlFor="password">Password</label>
-                <input
-                  style={styles.input}
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  value={formData.password}
-                  onChange={(e) => handleChange(e, setFormData)}
-                  required
-                  disabled={loading}
-                />
-                <button style={styles.button} type="submit" disabled={loading}>
-                  {loading ? 'Logging in...' : 'Login'}
-                </button>
-                <button style={styles.button} type="button" onClick={() => setIsLoginForm(false)}>
-                  Don't have an account? Register here.
-                </button>
-              </form>
-            </>
-          ) : (
-            <>
-              <h3 align="center">Register</h3>
-              {error && <h4 style={styles.error}>{error}</h4>}
-              <form style={styles.form} onSubmit={handleRegisterSubmit}>
-                <label style={styles.label} htmlFor="profilename">Profilename</label>
-                <input
-                  style={styles.input}
-                  type="text"
-                  name="profilename"
-                  placeholder="Profilename"
-                  value={registerData.profilename}
-                  onChange={(e) => handleChange(e, setRegisterData)}
-                  required
-                  disabled={loading}
-                />
-                <label style={styles.label} htmlFor="imagelink">Image(link)</label>
-                <img src={imagePreview} alt="Preview" style={styles.imgPreview} />
-                <input
-                  style={styles.input}
-                  type="text"
-                  name="imagelink"
-                  placeholder="Image link"
-                  value={registerData.imagelink}
-                  onChange={(e) => handleChange(e, setRegisterData)}
-                  required
-                  disabled={loading}
-                />
-                <label style={styles.label} htmlFor="username">Username</label>
-                <input
-                  style={styles.input}
-                  type="text"
-                  name="username"
-                  placeholder="Username"
-                  value={registerData.username}
-                  onChange={(e) => handleChange(e, setRegisterData)}
-                  required
-                  disabled={loading}
-                />
-                <label style={styles.label} htmlFor="email">Email</label>
-                <input
-                  style={styles.input}
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={registerData.email}
-                  onChange={(e) => handleChange(e, setRegisterData)}
-                  required
-                  disabled={loading}
-                />
-                <label style={styles.label} htmlFor="password">Password</label>
-                <input
-                  style={styles.input}
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  value={registerData.password}
-                  onChange={(e) => handleChange(e, setRegisterData)}
-                  required
-                  disabled={loading}
-                  pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
-                  title="Password must be at least 8 characters long and include at least one letter and one number"
-                />
-                <button style={styles.button} type="submit" disabled={loading}>
-                  {loading ? 'Registering...' : 'Register'}
-                </button>
-                <button style={styles.button} type="button" onClick={() => setIsLoginForm(true)}>
-                  Login
-                </button>
-              </form>
-            </>
-          )}
-        </div>
-      )}
+      <ParticlesComponent />
+      <div style={styles.overlay}>
+        {!showForms ? (
+          <div style={styles.mainScreen}>
+            <div style={styles.introText}>{typedText}</div>
+            {typingComplete && (
+              <button style={styles.button} onClick={() => setShowForms(true)}>
+                Continue
+              </button>
+            )}
+          </div>
+        ) : (
+          <div style={styles.formContainer}>
+            {isLoginForm ? (
+              <>
+                <h3 align="center">Login</h3>
+                {error && <h4 style={styles.error}>{error}</h4>}
+                <form style={styles.form} onSubmit={handleLoginSubmit}>
+                  <label style={styles.label} htmlFor="email">Email</label>
+                  <input
+                    style={styles.input}
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={formData.email}
+                    onChange={(e) => handleChange(e, setFormData)}
+                    required
+                    disabled={loading}
+                  />
+                  <label style={styles.label} htmlFor="password">Password</label>
+                  <input
+                    style={styles.input}
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={formData.password}
+                    onChange={(e) => handleChange(e, setFormData)}
+                    required
+                    disabled={loading}
+                  />
+                  <button style={styles.button} type="submit" disabled={loading}>
+                    {loading ? 'Logging in...' : 'Login'}
+                  </button>
+                  <button style={styles.button} type="button" onClick={() => setIsLoginForm(false)}>
+                    Don't have an account? Register here.
+                  </button>
+                </form>
+              </>
+            ) : (
+              <>
+                <h3 align="center">Register</h3>
+                {error && <h4 style={styles.error}>{error}</h4>}
+                <form style={styles.form} onSubmit={handleRegisterSubmit}>
+                  <label style={styles.label} htmlFor="profilename">Profilename</label>
+                  <input
+                    style={styles.input}
+                    type="text"
+                    name="profilename"
+                    placeholder="Profilename"
+                    value={registerData.profilename}
+                    onChange={(e) => handleChange(e, setRegisterData)}
+                    required
+                    disabled={loading}
+                  />
+                  <label style={styles.label} htmlFor="imagelink">Image(link)</label>
+                  <img src={imagePreview} alt="Preview" style={styles.imgPreview} />
+                  <input
+                    style={styles.input}
+                    type="text"
+                    name="imagelink"
+                    placeholder="Image link"
+                    value={registerData.imagelink}
+                    onChange={(e) => handleChange(e, setRegisterData)}
+                    required
+                    disabled={loading}
+                  />
+                  <label style={styles.label} htmlFor="username">Username</label>
+                  <input
+                    style={styles.input}
+                    type="text"
+                    name="username"
+                    placeholder="Username"
+                    value={registerData.username}
+                    onChange={(e) => handleChange(e, setRegisterData)}
+                    required
+                    disabled={loading}
+                  />
+                  <label style={styles.label} htmlFor="email">Email</label>
+                  <input
+                    style={styles.input}
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={registerData.email}
+                    onChange={(e) => handleChange(e, setRegisterData)}
+                    required
+                    disabled={loading}
+                  />
+                  <label style={styles.label} htmlFor="password">Password</label>
+                  <input
+                    style={styles.input}
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={registerData.password}
+                    onChange={(e) => handleChange(e, setRegisterData)}
+                    required
+                    disabled={loading}
+                    pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+                    title="Password must be at least 8 characters long and include at least one letter and one number"
+                  />
+                  <button style={styles.button} type="submit" disabled={loading}>
+                    {loading ? 'Registering...' : 'Register'}
+                  </button>
+                  <button style={styles.button} type="button" onClick={() => setIsLoginForm(true)}>
+                    Login
+                  </button>
+                </form>
+              </>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
@@ -234,6 +238,11 @@ const styles = {
     alignItems: 'center',
     fontFamily: 'Arial, sans-serif',
     backgroundColor: '#f0f0f0',
+    position: 'relative',
+  },
+  overlay: {
+    zIndex: 1,
+    position: 'relative',
   },
   mainScreen: {
     textAlign: 'center',
@@ -245,6 +254,7 @@ const styles = {
     width: '100%',
     transition: 'box-shadow 0.3s ease',
     marginBottom: '20px',
+    zIndex: 1,
   },
   formContainer: {
     textAlign: 'center',

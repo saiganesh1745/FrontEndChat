@@ -49,3 +49,12 @@
     padding: 5px;
     cursor: pointer;
   }
+
+  .dark-theme .contact-details-content {
+    background: #333;
+    color: #fff;
+  }
+  
+  .dark-theme .contact-details-overlay {
+    background-color: rgba(0, 0, 0, 0.8);
+  }

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import config from "./../config";
+import { Toaster, toast } from "sonner";
 import './UpdateUserData.css';
 
 export default function UpdateUserData({ theme }) {
@@ -30,28 +31,52 @@ export default function UpdateUserData({ theme }) {
     e.preventDefault();
     try {
       const updatedData = { userid: userData.userid };
+      let hasChanges = false;
+  
       for (const key in userData) {
         if (userData[key] !== initialUserData[key]) {
           updatedData[key] = userData[key];
+          hasChanges = true;
         }
       }
-      if (Object.keys(updatedData).length > 1) {
+  
+      if (hasChanges) {
         const response = await axios.put(
           `${config.url}/updateuserdata`,
           updatedData
         );
         if (response.status === 200) {
           localStorage.setItem("user", JSON.stringify({ ...initialUserData, ...updatedData }));
-          alert("User data updated successfully");
+          toast.success("User data updated successfully", {
+            style: {
+              backgroundColor: 'green',
+              color: 'white',
+            },
+          });
         }
+      } else {
+        toast.info("No changes detected", {
+          style: {
+            backgroundColor: '#FFFF1F',
+            color: 'black',
+          },
+        });
       }
     } catch (error) {
-      setError(error.response?.data || "An error occurred");
+      // setError(error.response?.data || "An error occurred");
+      toast.error("Failed to update user data", {
+        style: {
+          backgroundColor: 'red',
+          color: 'white',
+        },
+      });
     }
   };
+  
 
   return (
     <div className={`p-container ${theme}`}>
+      <Toaster />
       <div className="p-card">
         <form onSubmit={handleSubmit}>
           <div>
